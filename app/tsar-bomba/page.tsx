@@ -27,11 +27,11 @@ export default function Page() {
       <Header />
       <main id="main">
         {/* HERO: text -> image -> CTA (normal flow on mobile) */}
-        <section className="mx-auto max-w-6xl px-4 pb-10 pt-8 md:pt-12" aria-labelledby="hero-title">
-          <div className="grid gap-8 md:grid-cols-2 md:items-center">
+        <section className="mx-auto max-w-6xl px-4 pb-8 pt-6 md:pt-10" aria-labelledby="hero-title">
+          <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] md:items-start md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wide text-rosegold">2026 buying guide</p>
-              <h1 id="hero-title" className="mt-2 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">
+              <h1 id="hero-title" className="mt-2 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-4xl">
                 Tsar Bomba tonneau watches: automatic or quartz?
               </h1>
               <p className="mt-4 text-lg text-slate-300">
@@ -46,14 +46,14 @@ export default function Page() {
               <p className="mt-4 text-sm text-slate-400">{DISCLOSURE}</p>
             </div>
 
-            <div>
-              <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-carbon">
+            <div className="mx-auto w-full max-w-sm md:max-w-none">
+              <div className="relative mx-auto aspect-[4/5] max-h-[26rem] w-full overflow-hidden rounded-2xl border border-white/10 bg-carbon">
                 <Image
                   src={HERO.images[0].src}
                   alt={HERO.images[0].alt}
                   fill
                   priority
-                  sizes="(min-width: 768px) 45vw, 100vw"
+                  sizes="(min-width: 768px) 416px, 384px"
                   className="object-contain"
                 />
               </div>
@@ -75,7 +75,7 @@ export default function Page() {
 
         {/* Merchant terms (verified) */}
         <section className="border-y border-white/10 bg-carbon" aria-labelledby="terms-title">
-          <div className="mx-auto max-w-6xl px-4 py-10">
+          <div className="mx-auto max-w-6xl px-4 py-8">
             <h2 id="terms-title" className="text-2xl font-bold">What the merchant offers</h2>
             <p className="mt-1 text-sm text-slate-400">As listed on tsarbomba.com. Read the merchant policies before you order.</p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -90,14 +90,14 @@ export default function Page() {
         </section>
 
         {/* Product cards */}
-        <section className="mx-auto max-w-6xl space-y-8 px-4 py-12" aria-labelledby="picks-title">
+        <section className="mx-auto max-w-6xl space-y-6 px-4 py-10" aria-labelledby="picks-title">
           <h2 id="picks-title" className="text-2xl font-bold sm:text-3xl">The two models compared</h2>
           <ProductCard product={AUTO} placement="card_tb8208a" compareHref="#compare" />
           <ProductCard product={QUARTZ} placement="card_tb8204q" compareHref="#compare" />
         </section>
 
         {/* Comparison */}
-        <section id="compare" className="mx-auto max-w-6xl px-4 pb-12" aria-labelledby="compare-title">
+        <section id="compare" className="mx-auto max-w-6xl px-4 pb-10" aria-labelledby="compare-title">
           <h2 id="compare-title" className="text-2xl font-bold sm:text-3xl">Side-by-side specs</h2>
           <div className="mt-6 overflow-x-auto rounded-xl border border-white/10">
             <table className="w-full min-w-[20rem] text-left text-sm">
@@ -124,7 +124,7 @@ export default function Page() {
 
         {/* Who each is for + honest notes */}
         <section className="border-y border-white/10 bg-carbon" aria-labelledby="who-title">
-          <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-2">
+          <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-2">
             <div>
               <h2 id="who-title" className="text-2xl font-bold">Which one fits you?</h2>
               <ul className="mt-4 space-y-3 text-slate-300">
@@ -145,7 +145,7 @@ export default function Page() {
         </section>
 
         {/* FAQ */}
-        <section className="mx-auto max-w-3xl px-4 py-12" aria-labelledby="faq-title">
+        <section className="mx-auto max-w-3xl px-4 py-10" aria-labelledby="faq-title">
           <h2 id="faq-title" className="text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
           <div className="mt-6"><Faq items={FAQS} /></div>
         </section>

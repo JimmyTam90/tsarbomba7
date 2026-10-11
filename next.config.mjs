@@ -1,24 +1,19 @@
 /** @type {import('next').NextConfig} */
-// Spoke subpath architecture:
-// - The landing page lives at app/tsar-bomba/page.tsx (served at /tsar-bomba).
-// - There is NO app/page.tsx and NO basePath (basePath would create /tsar-bomba/tsar-bomba under hub rewrites).
-// - Optional assetPrefix: only set NEXT_PUBLIC_ASSET_PREFIX when the hub proxies /tsar-bomba/* and
-//   static files (/_next/*) 404 on the hub domain. Example: /tsar-bomba-static
-//   (the hub must then rewrite /tsar-bomba-static/_next/* to this spoke's /_next/*).
-const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX || undefined;
-
+// Spoke subpath architecture: page at app/tsar-bomba/page.tsx, NO basePath, NO app/page.tsx.
+// assetPrefix makes /_next/* assets load directly from the Spoke domain when the page is
+// proxied through the Vercel Hub. Override with NEXT_PUBLIC_ASSET_PREFIX if the Spoke domain changes.
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  assetPrefix,
   images: {
     unoptimized: true,
     remotePatterns: [
-      { protocol: "https", hostname: "tsarbomba.com", pathname: "/cdn/shop/**" },
-      { protocol: "https", hostname: "cdn.shopify.com", pathname: "/s/files/**" },
+      { protocol: "https", hostname: "tsarbomba.com" },
+      { protocol: "https", hostname: "cdn.shopify.com" },
     ],
   },
-  // Spoke root "/" has no page. Send direct visits (e.g. the Vercel preview) to the subpath.
+  assetPrefix: process.env.NEXT_PUBLIC_ASSET_PREFIX || "https://tsarbomba7.vercel.app",
+  // Spoke root "/" has no page; send direct visits to the subpath.
   async redirects() {
     return [{ source: "/", destination: "/tsar-bomba", permanent: false }];
   },
