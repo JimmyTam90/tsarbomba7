@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #090a0f;
+  --card: #12151e;
+  --text: #f8fafc;
+  --accent: #e11d48;
+  --gold: #d97706;
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  /* room for the sticky mobile CTA + safe area */
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+}
+@media (min-width: 768px) { body { padding-bottom: 0; } }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-[48px] w-full items-center justify-center rounded-lg bg-crimson px-6 py-3 text-center text-base font-bold text-white shadow-lg transition hover:bg-rose-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-[48px] w-full items-center justify-center rounded-lg border border-slate-600 px-6 py-3 text-center text-base font-semibold text-slatelight transition hover:border-rosegold hover:text-rosegold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+  }
+  .carbon-bg {
+    background-color: #12151e;
+    background-image:
+      linear-gradient(45deg, rgba(255,255,255,.025) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.025) 75%),
+      linear-gradient(45deg, rgba(255,255,255,.025) 25%, transparent 25%, transparent 75%, rgba(255,255,255,.025) 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 4px 4px;
+  }
+}
